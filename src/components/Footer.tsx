@@ -88,6 +88,11 @@ const navigation = {
   ],
 };
 
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('You Submit Form Subscribe NewsLetter!');
+}
+
 export function Footer() {
   return (
     <footer className="bg-gray-800" aria-labelledby="footer-heading">
@@ -178,7 +183,7 @@ export function Footer() {
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
-            <form className="mt-4 sm:flex sm:max-w-md">
+            <form onSubmit={handleSubmit} className="mt-4 sm:flex sm:max-w-md">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>

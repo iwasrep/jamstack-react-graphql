@@ -1,11 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
 
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Home', slug: 'home', href: '/' },
+  { name: 'Blog', slug: 'blog', href: '/blog' },
+  { name: 'Contact', slug: 'contact', href: '/contact' },
 ]
 
 export function Header() {
@@ -82,7 +84,8 @@ export function Header() {
               </div>
               <div className="hidden md:flex md:space-x-10">
                 {navigation.map((item) => (
-                  <Link href={item.href}>
+                  // eslint-disable-next-line react/jsx-key
+                  <Link key={item.slug} href={item.href}>
                     <a key={item.name} className="font-medium text-gray-500 hover:text-gray-900">
                       {item.name}
                     </a>
@@ -92,7 +95,7 @@ export function Header() {
               <div className="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                 <span className="inline-flex rounded-md shadow">
                   <a
-                    href="#"
+                    href="/login"
                     className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50"
                   >
                     Log in
